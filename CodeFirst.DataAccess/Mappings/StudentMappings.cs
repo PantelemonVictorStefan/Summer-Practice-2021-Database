@@ -28,6 +28,12 @@ namespace CodeFirst.DataAccess.Mappings
                 .HasOne<Address>(s => s.Address)
                 .WithOne(a => a.Student)
                 .HasForeignKey<Address>(s=>s.StudentId);
+
+            modelBuilder.Entity<Student>()
+                .HasMany(s => s.Grades)
+                .WithOne(g => g.Student)
+                .HasForeignKey(s => s.StudentId);
+
         }
     }
 }

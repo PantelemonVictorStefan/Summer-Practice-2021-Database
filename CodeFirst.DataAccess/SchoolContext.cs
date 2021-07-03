@@ -22,10 +22,12 @@ namespace CodeFirst.DataAccess
         {
             StudentMappings.Map(modelBuilder);
             AddressMappings.Map(modelBuilder);
+            GradeMappings.Map(modelBuilder);
         }
 
         //entities
         public DbSet<Student> Students { get; set; }
         public DbSet<Address> Address { get; set; }
+        public DbSet<Grade> Grade { get; set; }
     }
 }

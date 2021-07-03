@@ -35,12 +35,15 @@ namespace CodeFirst.Web.Controllers
         {
             Student student = context.Students
                 .Include(s=>s.Address)
+                .Include(s => s.Grades)
                 .FirstOrDefault(s => s.Id == id);
 
             if (student?.Address != null)
             {
                 student.Address.Student = null;
             }
+
+            student?.Grades.ToList().ForEach((grade) => { grade.Student = null; });
 
             return student;
         }

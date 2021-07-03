@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace CodeFirst.Entities
 {
@@ -9,5 +11,7 @@ namespace CodeFirst.Entities
         public string LastName { get; set; }
 
         public virtual Address Address { get; set; }
+
+        public virtual ICollection<Grade> Grades { get; set; } = new List<Grade>();
     }
 }
