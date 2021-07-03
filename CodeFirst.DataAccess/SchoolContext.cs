@@ -21,9 +21,11 @@ namespace CodeFirst.DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             StudentMappings.Map(modelBuilder);
+            AddressMappings.Map(modelBuilder);
         }
 
         //entities
         public DbSet<Student> Students { get; set; }
+        public DbSet<Address> Address { get; set; }
     }
 }

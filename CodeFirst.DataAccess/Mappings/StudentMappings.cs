@@ -23,6 +23,11 @@ namespace CodeFirst.DataAccess.Mappings
                 .HasColumnName("LastName")
                 .HasMaxLength(30)
                 .IsRequired();
+
+            modelBuilder.Entity<Student>()
+                .HasOne<Address>(s => s.Address)
+                .WithOne(a => a.Student)
+                .HasForeignKey<Address>(s=>s.StudentId);
         }
     }
 }

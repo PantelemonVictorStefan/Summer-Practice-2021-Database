@@ -5,6 +5,7 @@ using System.Net;
 using CodeFirst.DataAccess;
 using CodeFirst.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -32,33 +33,34 @@ namespace CodeFirst.Web.Controllers
         [HttpGet("{id}")]
         public Student Get(Guid id)
         {
-            return context.Students.FirstOrDefault(s => s.Id == id);
+            Student student = context.Students
+                .Include(s=>s.Address)
+                .FirstOrDefault(s => s.Id == id);
+
+            if (student?.Address != null)
+            {
+                student.Address.Student = null;
+            }
+
+            return student;
         }
 
         // POST api/<StudentController>
         [HttpPost]
         public void Post([FromBody] Student student)
         {
-            if (student.Id.HasValue)
-            {
-                Response.StatusCode = (int)HttpStatusCode.BadRequest;
-
-                return;
-            }
-
             context.Students.Add(student);
 
             context.SaveChanges();
         }
 
         // PUT api/<StudentController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put([FromBody] Student student)
         {
             if (!student.Id.HasValue)
             {
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
-
                 return;
             }
 
@@ -71,14 +73,7 @@ namespace CodeFirst.Web.Controllers
         [HttpDelete("{id}")]
         public void Delete(Guid id)
         {
-            var studentToDelete = context.Students.FirstOrDefault(s => s.Id == id);
-
-            if (studentToDelete == null)
-            {
-                Response.StatusCode = (int)HttpStatusCode.NotFound;
-
-                return;
-            }
+            var studentToDelete = context.Students.First(s => s.Id == id);
 
             context.Students.Remove(studentToDelete);
 
