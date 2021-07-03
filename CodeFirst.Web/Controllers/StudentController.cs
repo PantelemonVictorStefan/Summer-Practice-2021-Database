@@ -36,6 +36,7 @@ namespace CodeFirst.Web.Controllers
             Student student = context.Students
                 .Include(s=>s.Address)
                 .Include(s => s.Grades)
+                .Include(s => s.Courses)
                 .FirstOrDefault(s => s.Id == id);
 
             if (student?.Address != null)
@@ -44,6 +45,8 @@ namespace CodeFirst.Web.Controllers
             }
 
             student?.Grades.ToList().ForEach((grade) => { grade.Student = null; });
+
+            student?.Courses.ToList().ForEach((course) => { course.Students = null; });
 
             return student;
         }
@@ -68,6 +71,18 @@ namespace CodeFirst.Web.Controllers
             }
 
             context.Students.Update(student);
+
+            context.SaveChanges();
+        }
+
+        [HttpPatch]
+        public void Patch(Guid studentId, Guid courseGuid)
+        {
+            var student = context.Students.First(s => s.Id == studentId);
+
+            var course = context.Course.First(s => s.Id == courseGuid);
+
+            student.Courses.Add(course);
 
             context.SaveChanges();
         }

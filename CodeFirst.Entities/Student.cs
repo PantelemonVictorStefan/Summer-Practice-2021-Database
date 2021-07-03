@@ -13,5 +13,7 @@ namespace CodeFirst.Entities
         public virtual Address Address { get; set; }
 
         public virtual ICollection<Grade> Grades { get; set; } = new List<Grade>();
+
+        public virtual ICollection<Course> Courses { get; set; } = new List<Course>();
     }
 }

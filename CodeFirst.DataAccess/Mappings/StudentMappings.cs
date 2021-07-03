@@ -34,6 +34,10 @@ namespace CodeFirst.DataAccess.Mappings
                 .WithOne(g => g.Student)
                 .HasForeignKey(s => s.StudentId);
 
+            modelBuilder.Entity<Student>()
+                .HasMany<Course>(s => s.Courses)
+                .WithMany(c => c.Students);
+
         }
     }
 }
