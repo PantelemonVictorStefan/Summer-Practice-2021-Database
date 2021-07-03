@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFirst.Services", "CodeF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFirst.DataAccess", "CodeFirst.DataAccess\CodeFirst.DataAccess.csproj", "{0696A615-48F7-4313-A21B-42FC506BF8C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFirst.Entities", "CodeFirst.Entities\CodeFirst.Entities.csproj", "{D4D5A65B-EC05-41DD-8BF7-7F1644A0CB2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0696A615-48F7-4313-A21B-42FC506BF8C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0696A615-48F7-4313-A21B-42FC506BF8C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0696A615-48F7-4313-A21B-42FC506BF8C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4D5A65B-EC05-41DD-8BF7-7F1644A0CB2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4D5A65B-EC05-41DD-8BF7-7F1644A0CB2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4D5A65B-EC05-41DD-8BF7-7F1644A0CB2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4D5A65B-EC05-41DD-8BF7-7F1644A0CB2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
